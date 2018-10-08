@@ -1,0 +1,22 @@
+import java.io.IOException;
+import java.util.Scanner;
+
+public class runmc {
+	public static int runcommand(String command) throws IOException{
+		Process process=Runtime.getRuntime().exec(command);
+		return process.exitValue();
+	}
+	public static void main(String[] args) {
+		Scanner in= new Scanner(System.in);
+		try {
+			runcommand("java -jar minecraft.jar");
+			try{
+				runcommand("networksetup -setwebproxystate "Wi-fi" off");
+			} catch (IOException e){
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			}
+		}
+}
