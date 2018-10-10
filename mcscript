@@ -26,8 +26,6 @@ public class runmc {
 		fos.close();
 		rbc.close();
 	}
-
-public class runmc {
 	public static int runcommand(String command) throws IOException{
 		Process process=Runtime.getRuntime().exec(command);
 		return process.exitValue();
