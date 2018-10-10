@@ -33,7 +33,8 @@ public class runmc {
 		return process.exitValue();
 	}
 	public static void main(String[] args) {
-		if(){
+		File launch = new File("SCLauncher.jar");
+		if(!launch.exists()){
 			try {
 				String url = "http://downloads.swfworld.gq/files/SCLauncher.jar";
 				downloadUsingNIO(url, "SCLauncher.jar");
