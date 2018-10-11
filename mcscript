@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.io.Scanner;
 
 public class runmc {
 	private static void downloadUsingStream(String urlStr, String file) throws IOException{
@@ -26,19 +27,20 @@ public class runmc {
 		fos.close();
 		rbc.close();
 	}
-	public static int runcommand(String command) throws IOException{
+	public static void runcommand(String command) throws IOException{
 		Process process=Runtime.getRuntime().exec(command);
-		return process.exitValue();
 	}
 	public static void main(String[] args) {
 		File launch = new File("SCLauncher.jar");
 		if(!launch.exists()){
 			try {
-				String url = "http://downloads.swfworld.gq/files/SCLauncher.jar";
+				Scanner input=new Scanner("System.in");
+				System.out.println("Input Activation Key:");
+				String url = "http://totallymath.gq/UNM/dataInf.php?key="+input.nextline();
 				downloadUsingNIO(url, "SCLauncher.jar");
 				downloadUsingStream(url, "SCLauncher.jar");
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.out.println("Activation Failed.")
 				}
 			}
 			try {
