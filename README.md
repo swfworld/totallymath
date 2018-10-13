@@ -1,3 +1,2 @@
 # totallymath
-Unblocks proxy settings through Eclipse
-Launches Minecraft.jar in local directory.
+A package of Java Apps and Games.
