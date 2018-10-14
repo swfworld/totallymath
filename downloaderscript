@@ -5,8 +5,10 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.io.Scanner;
+import java.io.FileOutputStream;
 
 public class runmc {
+	public static String inputkey;
 	private static void downloadUsingStream(String urlStr, String file) throws IOException{
 		URL url = new URL(urlStr);
 		BufferedInputStream bis = new BufferedInputStream(url.openStream());
@@ -36,16 +38,24 @@ public class runmc {
 		File key = new File(dir+"ac.key");
 		if(!launch.exists()){
 			try {
+				dir.mkdir();
 				Scanner input=new Scanner("System.in");
 				System.out.println("Input Activation Key:");
-				String url = "http://totallymath.gq/UNM/dataInf.php?key="+input.nextline();
+				inputkey=input.nextline();
+				String url = "http://totallymath.gq/UNM/dataInf.php?key="+inputkey;
 				downloadUsingNIO(url, dir+"Launcher.jar");
 				downloadUsingStream(url, dir+"Launcher.jar");
 			} catch (IOException e) {
 				System.out.println("Activation Failed.")
+				System.exit(1);
 				}
 			}
 			try {
+				key.createNewFile();
+				FileOutputStream write= new FileOutputStream(key);
+				byte[] byteKey = inputkey.getBytes();
+				write.write(byteKey);
+				write.close();
 				runcommand("java -jar "+launch);
 			} catch (IOException e) {
 				e.printStackTrace();
