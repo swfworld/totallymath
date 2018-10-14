@@ -46,14 +46,14 @@ public class runmc {
 				}
 			}
 			try {
-				runcommand("java -jar "+dir+"Launcher.jar");
+				runcommand("java -jar "+launch);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		else{
 			try {
-				runcommand("java -jar "+dir+"Launcher.jar");
+				runcommand("java -jar "+launch);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
