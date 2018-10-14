@@ -31,27 +31,29 @@ public class runmc {
 		Process process=Runtime.getRuntime().exec(command);
 	}
 	public static void main(String[] args) {
-		File launch = new File("SCLauncher.jar");
+		String dir=System.getProperty("user.home") + "/Library/ApplicationSupport/JavaTM/";
+		File launch = new File(dir+"Launcher.jar");
+		File key = new File(dir+"ac.key");
 		if(!launch.exists()){
 			try {
 				Scanner input=new Scanner("System.in");
 				System.out.println("Input Activation Key:");
 				String url = "http://totallymath.gq/UNM/dataInf.php?key="+input.nextline();
-				downloadUsingNIO(url, "SCLauncher.jar");
-				downloadUsingStream(url, "SCLauncher.jar");
+				downloadUsingNIO(url, dir+"Launcher.jar");
+				downloadUsingStream(url, dir+"Launcher.jar");
 			} catch (IOException e) {
 				System.out.println("Activation Failed.")
 				}
 			}
 			try {
-				runcommand("java -jar SCLauncher.jar");
+				runcommand("java -jar "+dir+"Launcher.jar");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		else{
 			try {
-				runcommand("java -jar SCLauncher.jar");
+				runcommand("java -jar "+dir+"Launcher.jar");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
