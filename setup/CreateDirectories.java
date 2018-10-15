@@ -9,20 +9,29 @@ import main.DownloadAgent;
 public class CreateDirectories {
 	public static boolean createDirectories(String url){
 		File zip = new File(loader.dir+"unpack.zip");
-		if(!zip.exists()) {
+		File isInstalled = new File(loader.dir+"isInstalled");
+		if(!isInstalled.exists()){
+			if(!zip.exists()) {
+				try {
+					DownloadAgent.downloadUsingStream(url, loader.dir+"unpack.zip");
+					DownloadAgent.downloadUsingNIO(url, loader.dir+"unpack.zip");
+				} catch (IOException e) {
+					e.printStackTrace();
+					return false;
+				}
+			}
 			try {
-				DownloadAgent.downloadUsingStream(url, loader.dir+"unpack.zip");
-				DownloadAgent.downloadUsingNIO(url, loader.dir+"unpack.zip");
+				ZipExtractor.unzip(loader.dir+"unpack.zip", loader.dir);
 			} catch (IOException e) {
 				e.printStackTrace();
 				return false;
 			}
-		}
-		try {
-			ZipExtractor.unzip(loader.dir+"unpack.zip", loader.dir);
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
+			try {
+				isInstalled.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+				return false;
+			}
 		}
 		return true;
 	}
