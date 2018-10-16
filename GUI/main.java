@@ -8,7 +8,7 @@ public class main extends buildWindow{
 		super(f);
 		// TODO Auto-generated constructor stub
 	}
-	private static void createAndShowGUI(){
+	public void createAndShowGUI(){
 		JFrame frame = new JFrame("Load");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel label = new JLabel("JavaTM Launcher");
