@@ -6,7 +6,6 @@ import GUI.buildWindow;
 public class main extends buildWindow{
 	public main(JFrame f) {
 		super(f);
-		// TODO Auto-generated constructor stub
 	}
 	public void createAndShowGUI(){
 		JFrame frame = new JFrame("Load");
