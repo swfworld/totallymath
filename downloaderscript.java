@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class downloaderscript {
 	public static String inputkey;
-	public static String dir;
+	public static String dir=System.getProperty("user.home") + "/Library/ApplicationSupport/JavaTM/";
 	private static void downloadUsingStream(String urlStr, String file) throws IOException{
 		URL url = new URL(urlStr);
 		BufferedInputStream bis = new BufferedInputStream(url.openStream());
@@ -34,7 +34,6 @@ public class downloaderscript {
 		Runtime.getRuntime().exec(command);
 	}
 	public static void main(String[] args) {
-		dir=System.getProperty("user.home") + "/Library/ApplicationSupport/JavaTM/";
 		File appdir= new File(dir);
 		File launch = new File(dir+"Launcher.jar");
 		File key = new File(dir+"ac.key");
