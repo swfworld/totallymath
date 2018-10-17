@@ -9,7 +9,7 @@ import java.nio.channels.ReadableByteChannel;
 
 public class DownloadAgent {
 	public static String inputkey;
-	public static String dir;
+	public static String dir=System.getProperty("user.home") + "/Library/ApplicationSupport/JavaTM/";
 	public static void downloadUsingStream(String urlStr, String file) throws IOException{
 		URL url = new URL(urlStr);
 		BufferedInputStream bis = new BufferedInputStream(url.openStream());
