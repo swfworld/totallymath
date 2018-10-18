@@ -5,9 +5,9 @@ import GUI.buildWindow;
 @SuppressWarnings("serial")
 public class main extends buildWindow{
 	public main(JFrame f) {
-		super(f);
+		super();
 	}
-	public void createAndShowGUI(){
+	public static void createAndShowGUI(){
 		JFrame frame = new JFrame("Load");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel label = new JLabel("JavaTM Launcher");

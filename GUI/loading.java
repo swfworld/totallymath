@@ -3,7 +3,7 @@ import javax.swing.*;
 import GUI.buildWindow;
 
 public class loading{
-	public void LoadingFrame(){
+	public static void LoadingFrame(){
 		JFrame frame = new JFrame("Load");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel label = new JLabel("JavaTM Launcher");
@@ -13,7 +13,7 @@ public class loading{
 	}
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {createAndShowGUI();}
+			public void run() {LoadingFrame();}
 		});
 	}
 }
