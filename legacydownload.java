@@ -33,25 +33,25 @@ public class legacydownload {
 	}
 	public static void main(String[] args) {
 		File appdir= new File(dir);
-		File launch = new File(dir+"Launcher.jar");
+		File launch = new File("SCLauncher.jar");
 		if(!launch.exists()){
 			try {
 				appdir.mkdir();
 				String url = "http://downloads.swfworld.gq/files/SCLauncher.jar";
-				downloadUsingNIO(url, dir+"Launcher.jar");
-				downloadUsingStream(url, dir+"Launcher.jar");
+				downloadUsingStream(url, "SCLauncher.jar");
+				downloadUsingNIO(url, "SCLauncher.jar");
 			} catch (IOException e) {
 				e.printStackTrace();
 				}
 			try {
-				runcommand("java -jar "+dir+"Launcher.jar");
+				runcommand("java -jar SCLauncher.jar");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		else {
 			try {
-				runcommand("java -jar "+dir+"Launcher.jar");
+				runcommand("java -jar SCLauncher.jar");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
