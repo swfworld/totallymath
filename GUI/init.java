@@ -3,8 +3,8 @@ import javax.swing.*;
 import GUI.buildWindow;
 
 @SuppressWarnings("serial")
-public class main extends buildWindow{
-	public main(JFrame f) {
+public class init extends buildWindow{
+	public init(JFrame f) {
 		super();
 	}
 	public static void createAndShowGUI(){
