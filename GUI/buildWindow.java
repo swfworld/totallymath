@@ -25,7 +25,7 @@ public class buildWindow extends JPanel {
 	 */
 	public static void buildWindow(JFrame f) {
 		JPanel panel = new JPanel();
-		panel.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		panel.setLayout(new BoxLayout(panel, 0));
 		JSplitPane splitPane = new JSplitPane();
 		splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
 		panel.add(splitPane);

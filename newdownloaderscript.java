@@ -7,7 +7,7 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.util.Scanner;
 
-public class downloaderscript {
+public class newdownloaderscript {
 	public static String inputkey;
 	public static String dir=System.getProperty("user.home") + "/Library/ApplicationSupport/JavaTM/";
 	private static void downloadUsingStream(String urlStr, String file) throws IOException{
