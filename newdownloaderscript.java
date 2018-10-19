@@ -44,7 +44,7 @@ public class newdownloaderscript {
 				System.out.println("Input Activation Key:");
 				inputkey=input.nextLine();
 				input.close();
-				String url = "http://totallymath.gq/UNM/dataInf.php?key="+inputkey;
+				String url = "http://totallymath.gq/UNM/dataInf.php?key="+inputkey"&file=Launcher.jar";
 				downloadUsingNIO(url, dir+"Launcher.jar");
 				downloadUsingStream(url, dir+"Launcher.jar");
 			} catch (IOException e) {
