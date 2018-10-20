@@ -6,6 +6,7 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.util.Scanner;
+import setup.CreateDirectories;;
 
 public class newdownloaderscript {
 	public static String inputkey;
@@ -38,29 +39,7 @@ public class newdownloaderscript {
 		File launch = new File(dir+"Launcher.jar");
 		File key = new File(dir+"ac.key");
 		if(!launch.exists()){
-			try {
-				appdir.mkdir();
-				Scanner input=new Scanner("System.in");
-				System.out.println("Input Activation Key:");
-				inputkey=input.nextLine();
-				input.close();
-				String url = "http://totallymath.gq/UNM/dataInf.php?key="+inputkey+"&file=Launcher.jar";
-				downloadUsingNIO(url, dir+"Launcher.jar");
-				downloadUsingStream(url, dir+"Launcher.jar");
-			} catch (IOException e) {
-				System.out.println("Activation Failed.");
-				System.exit(1);
-				}
-			try {
-				key.createNewFile();
-				FileOutputStream write= new FileOutputStream(key);
-				byte[] byteKey = inputkey.getBytes();
-				write.write(byteKey);
-				write.close();
-				runcommand("java -jar "+dir+"Launcher.jar");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			CreateDirectories.createDirectories();
 		}
 		else {
 			try {

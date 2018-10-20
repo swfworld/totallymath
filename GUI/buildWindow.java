@@ -17,6 +17,9 @@ import javax.swing.Box;
 import javax.swing.JTabbedPane;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JMenuItem;
+import javax.swing.border.BevelBorder;
+import javax.swing.JButton;
+import java.awt.BorderLayout;
 
 public class buildWindow extends JPanel {
 	private static JTable table;
@@ -30,11 +33,6 @@ public class buildWindow extends JPanel {
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
 		splitPane.setRightComponent(tabbedPane);
-		JToolBar toolbar=new JToolBar();
-		splitPane.setLeftComponent(toolbar);
-		
-		JLabel lblJavatm = new JLabel("JavaTM");
-		toolbar.add(lblJavatm);
 		JPanel home=new JPanel();
 		JPanel yprgms=new JPanel();
 		JPanel gprgms=new JPanel();
@@ -43,10 +41,22 @@ public class buildWindow extends JPanel {
 		table = new JTable();
 		table.setShowGrid(false);
 		tabbedPane.addTab("Home", null, home, null);
+		home.setLayout(new BorderLayout(0, 0));
+		
+		JButton btnUpdateTm = new JButton("Update TM");
+		btnUpdateTm.setEnabled(false);
+		home.add(btnUpdateTm, BorderLayout.NORTH);
 		tabbedPane.addTab("Your Programs", null, yprgms, null);
+		yprgms.setLayout(new BoxLayout(yprgms, BoxLayout.X_AXIS));
 		tabbedPane.addTab("Get Programs", null, gprgms, null);
 		tabbedPane.addTab("Tools", null, tools, null);
 		tabbedPane.addTab("Settings", null, settings, null);
+		JToolBar toolbar=new JToolBar();
+		toolbar.setEnabled(false);
+		splitPane.setLeftComponent(toolbar);
+		
+		JLabel lblJavatm = new JLabel("JavaTM");
+		toolbar.add(lblJavatm);
 		
 		f.getContentPane().add(panel);
 	}

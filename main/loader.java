@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import setup.CreateDirectories;
+
 public class loader {
 	public final static String dir=System.getProperty("user.home") + "/Library/ApplicationSupport/JavaTM/";
 	public final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
@@ -71,13 +73,10 @@ public class loader {
 		System.exit(0);
 	}
 	public static void main(String[] args) {
+		File maindir=new File(dir);
 		File key = new File(dir+"ac.key");
-		if(!key.exists()){
-			
-			System.exit(0);
-		}
-		else {
-			
+		if(!maindir.exists()) {
+			CreateDirectories.createDirectories();
 		}
 	}
 }
