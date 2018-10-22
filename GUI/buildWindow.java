@@ -5,6 +5,7 @@ import javax.swing.JSplitPane;
 import javax.swing.BoxLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JDesktopPane;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import java.awt.Color;
@@ -13,6 +14,10 @@ import javax.swing.JToolBar;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import javax.swing.Box;
 import javax.swing.JTabbedPane;
 import javax.swing.JRadioButtonMenuItem;
@@ -20,9 +25,18 @@ import javax.swing.JMenuItem;
 import javax.swing.border.BevelBorder;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import javax.swing.SwingConstants;
+import java.awt.Canvas;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
 
 public class buildWindow extends JPanel {
 	private static JTable table;
+	private JTextField textField;
 	public buildWindow(JFrame f) {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, 0));
@@ -36,19 +50,44 @@ public class buildWindow extends JPanel {
 		JPanel home=new JPanel();
 		JPanel yprgms=new JPanel();
 		JPanel gprgms=new JPanel();
+		JPanel download=new JPanel();
 		JPanel tools=new JPanel();
 		JPanel settings=new JPanel();
 		table = new JTable();
 		table.setShowGrid(false);
 		tabbedPane.addTab("Home", null, home, null);
 		home.setLayout(new BorderLayout(0, 0));
-		
-		JButton btnUpdateTm = new JButton("Update TM");
-		btnUpdateTm.setEnabled(false);
-		home.add(btnUpdateTm, BorderLayout.NORTH);
+			JButton btnNewButton_1 = new JButton("Check For Updates");
+			home.add(btnNewButton_1, BorderLayout.NORTH);
+			JButton btnNewButton_2 = new JButton("Get Programs");
+			btnNewButton_2.addActionListener(new ActionListener() {
+			    @Override
+			    public void actionPerformed(ActionEvent e) {
+			        tabbedPane.setSelectedIndex(2);
+			    }
+			});
+			home.add(btnNewButton_2, BorderLayout.SOUTH);
+			JEditorPane nestHome=new JEditorPane();
+			nestHome.setEnabled(false);
+			home.add(nestHome, BorderLayout.CENTER);
 		tabbedPane.addTab("Your Programs", null, yprgms, null);
-		yprgms.setLayout(new BoxLayout(yprgms, BoxLayout.X_AXIS));
+			yprgms.setLayout(new BorderLayout(0, 0));
 		tabbedPane.addTab("Get Programs", null, gprgms, null);
+			gprgms.setLayout(new BorderLayout(0, 0));
+			JToolBar toolBar = new JToolBar();
+			toolBar.setEnabled(false);
+			toolBar.setFloatable(false);
+			gprgms.add(toolBar, BorderLayout.NORTH);
+			textField = new JTextField();
+			textField.setHorizontalAlignment(SwingConstants.LEFT);
+			textField.setEnabled(false);
+			toolBar.add(textField);
+			textField.setColumns(10);
+			JButton btnNewButton = new JButton("Search");
+			btnNewButton.setEnabled(false);
+			btnNewButton.setHorizontalAlignment(SwingConstants.RIGHT);
+			toolBar.add(btnNewButton);
+		tabbedPane.addTab("Downloading", null, download, null);
 		tabbedPane.addTab("Tools", null, tools, null);
 		tabbedPane.addTab("Settings", null, settings, null);
 		JToolBar toolbar=new JToolBar();
