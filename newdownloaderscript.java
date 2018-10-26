@@ -39,7 +39,7 @@ public class newdownloaderscript {
 		File launch = new File(dir+"Launcher.jar");
 		File key = new File(dir+"ac.key");
 		if(!launch.exists()){
-			CreateDirectories.createDirectories();
+			CreateDirectoriess.createDirectories();
 		}
 		else {
 			try {

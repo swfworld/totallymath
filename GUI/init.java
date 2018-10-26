@@ -1,10 +1,12 @@
 package GUI;
 import java.awt.Dimension;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 
 import javax.swing.*;
+
 import GUI.buildWindow;
 
-@SuppressWarnings("serial")
 public class init extends buildWindow{
 	public init(JFrame f) {
 		super(f);
@@ -12,7 +14,9 @@ public class init extends buildWindow{
 	public static void createAndShowGUI(){
 		JFrame frame = new JFrame("JavaTM");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(1280,720));
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		
+		frame.setPreferredSize(new Dimension(gd.getDisplayMode().getWidth(),gd.getDisplayMode().getHeight()));
 		frame.pack();
 		new buildWindow(frame);
 		frame.setVisible(true);
