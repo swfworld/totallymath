@@ -1,4 +1,4 @@
-package main;
+package launcher;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import setup.CreateDirectories;
 
-public class loader {
+public class Main {
 	public final static String dir=System.getProperty("user.home") + "/Library/ApplicationSupport/JavaTM/";
 	public final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
 	public final static String updateURL="http://totallymath.gq/UNM/dataInf.php?key="+key()+"&file=latest.zip";
@@ -36,12 +36,12 @@ public class loader {
 		
 		return false;
 	}
-	public static boolean downloadAssets() {
+	public static boolean update() {
 		try {
 			DownloadAgent.downloadUsingStream(updateURL, "latest.zip");
 			DownloadAgent.downloadUsingNIO(updateURL, "latest.zip");
 			try {
-				ZipExtractor.unzip(loader.dir+"latest.zip", loader.dir);
+				ZipExtractor.unzip(Main.dir+"latest.zip", Main.dir);
 				return true;
 			}
 			catch(IOException e) {
@@ -55,7 +55,7 @@ public class loader {
 		}
 	}
 	public void restartApplication() throws URISyntaxException{
-		final File currentJar = new File(loader.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+		final File currentJar = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI());
 		/* is it a jar file? */
 		if(!currentJar.getName().endsWith(".jar"))
 		return;
