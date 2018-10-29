@@ -31,7 +31,6 @@ public class buildWindow extends JPanel {
 			home.add(btnNewButton_1, BorderLayout.NORTH);
 			JButton btnNewButton_2 = new JButton("Get Programs");
 			btnNewButton_2.addActionListener(new ActionListener() {
-			    @Override
 			    public void actionPerformed(ActionEvent e) {
 			        tabbedPane.setSelectedIndex(2);
 			    }

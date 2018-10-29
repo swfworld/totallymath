@@ -6,7 +6,7 @@ public class init{
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("JavaTM");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setPreferredSize(new Dimension(1280, 720));
+		frame.setPreferredSize(new Dimension(720, 480));
 		new loading(frame);
 		frame.pack();
 		frame.setVisible(true);
