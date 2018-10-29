@@ -1,34 +1,8 @@
 package GUI;
-
-import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import javax.swing.BoxLayout;
-import javax.swing.JMenuBar;
-import javax.swing.JDesktopPane;
-import javax.swing.JEditorPane;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import java.awt.Color;
-import javax.swing.JTable;
-import javax.swing.JToolBar;
-import javax.swing.JScrollPane;
-import javax.swing.JLabel;
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import java.io.IOException;
-
-import javax.swing.Box;
-import javax.swing.JTabbedPane;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JMenuItem;
-import javax.swing.border.BevelBorder;
-import javax.swing.JButton;
-import java.awt.BorderLayout;
-import javax.swing.SwingConstants;
-import java.awt.Canvas;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
 
 public class buildWindow extends JPanel {
 	private static JTable table;
