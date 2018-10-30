@@ -45,11 +45,16 @@ public class buildWindow extends JPanel {
 			gprgms.setLayout(new BorderLayout(0, 0));
 			JToolBar toolBar = new JToolBar();
 			gprgms.add(toolBar, BorderLayout.NORTH);
-			textField = new JTextField();
+			JTextField textField = new JTextField();
 			toolBar.add(textField);
 			textField.setColumns(1);
 			JButton btnNewButton = new JButton("Search");
 			btnNewButton.setHorizontalAlignment(SwingConstants.TRAILING);
+			btnNewButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					GUIHandler.parse(textField.getValue());
+				}
+			});
 			toolBar.add(btnNewButton);
 		tabbedPane.addTab("Downloading", null, download, null);
 		tabbedPane.addTab("Tools", null, tools, null);
