@@ -32,17 +32,24 @@ public class Main {
 		}
 		return null;
 	}
-	public static boolean checkForUpdates(String url) {
-		
-		return false;
+	public static boolean checkForUpdates() throws IOException {
+		String version=new String(Files.readAllBytes(Paths.get(dir+"version")));
+		if(version!="") {
+			update();
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	public static boolean update() {
 		try {
 			DownloadAgent.downloadUsingStream(updateURL, "latest.zip");
 			DownloadAgent.downloadUsingNIO(updateURL, "latest.zip");
 			try {
-				ZipExtractor.unzip(Main.dir+"latest.zip", Main.dir);
-				return true;
+				ZipExtractor.unzip(dir+"latest.zip", dir);
+				File zip= new File(dir+"latest.zip");
+				return zip.delete();
 			}
 			catch(IOException e) {
 				e.printStackTrace();

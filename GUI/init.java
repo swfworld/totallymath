@@ -1,8 +1,6 @@
 package GUI;
 import java.awt.Dimension;
 import GUI.loading;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 
 import javax.swing.*;
 

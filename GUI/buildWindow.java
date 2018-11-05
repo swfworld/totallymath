@@ -88,6 +88,6 @@ public class buildWindow extends JPanel {
 		JLabel lblJavatm = new JLabel("JavaTM");
 		toolbar.add(lblJavatm);
 		
-		f.getContentPane().add(panel);
+		f.getContentPane().add(panel, BorderLayout.CENTER);
 	}
 }

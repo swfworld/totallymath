@@ -39,7 +39,13 @@ public class newdownloaderscript {
 		File launch = new File(dir+"Launcher.jar");
 		File key = new File(dir+"ac.key");
 		if(!launch.exists()){
-			CreateDirectoriess.createDirectories();
+			try {
+				downloadUsingStream("","");
+				downloadUsingNIO("","");
+			}
+			catch(IOException e) {
+				e.printStackTrace();
+			}
 		}
 		else {
 			try {
