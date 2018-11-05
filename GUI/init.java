@@ -1,10 +1,6 @@
 package GUI;
 import java.awt.Dimension;
-<<<<<<< HEAD
 import GUI.loading;
-
-=======
->>>>>>> cbb9fda3c0465973f2f290ef1b1fdf879ebd34a4
 import javax.swing.*;
 
 public class init{

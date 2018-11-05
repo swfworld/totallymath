@@ -2,6 +2,9 @@ package GUI;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import main.GUI;
+
 import java.io.IOException;
 
 public class buildWindow extends JPanel {
@@ -52,7 +55,7 @@ public class buildWindow extends JPanel {
 			btnNewButton.setHorizontalAlignment(SwingConstants.TRAILING);
 			btnNewButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					GUIHandler.parse(textField.getValue());
+					GUI.search(textField.getText());
 				}
 			});
 			toolBar.add(btnNewButton);

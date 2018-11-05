@@ -7,4 +7,7 @@ public class GUI {
 		init.destroyGUI();
 		new errorWindow(text);
 	}
+	public static void search(String query) {
+		System.out.println(query);
+	}
 }

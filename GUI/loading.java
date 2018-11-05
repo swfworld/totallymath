@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import GUI.buildWindow;
-import main.GUIcoordinator;
+import main.GUI;
 
 
 public class loading{
