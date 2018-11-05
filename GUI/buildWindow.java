@@ -1,34 +1,8 @@
 package GUI;
-
-import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import javax.swing.BoxLayout;
-import javax.swing.JMenuBar;
-import javax.swing.JDesktopPane;
-import javax.swing.JEditorPane;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import java.awt.Color;
-import javax.swing.JTable;
-import javax.swing.JToolBar;
-import javax.swing.JScrollPane;
-import javax.swing.JLabel;
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import java.io.IOException;
-
-import javax.swing.Box;
-import javax.swing.JTabbedPane;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JMenuItem;
-import javax.swing.border.BevelBorder;
-import javax.swing.JButton;
-import java.awt.BorderLayout;
-import javax.swing.SwingConstants;
-import java.awt.Canvas;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
 
 public class buildWindow extends JPanel {
 	private static JTable table;
@@ -57,7 +31,6 @@ public class buildWindow extends JPanel {
 			home.add(btnNewButton_1, BorderLayout.NORTH);
 			JButton btnNewButton_2 = new JButton("Get Programs");
 			btnNewButton_2.addActionListener(new ActionListener() {
-			    @Override
 			    public void actionPerformed(ActionEvent e) {
 			        tabbedPane.setSelectedIndex(2);
 			    }
@@ -72,11 +45,16 @@ public class buildWindow extends JPanel {
 			gprgms.setLayout(new BorderLayout(0, 0));
 			JToolBar toolBar = new JToolBar();
 			gprgms.add(toolBar, BorderLayout.NORTH);
-			textField = new JTextField();
+			JTextField textField = new JTextField();
 			toolBar.add(textField);
 			textField.setColumns(1);
 			JButton btnNewButton = new JButton("Search");
 			btnNewButton.setHorizontalAlignment(SwingConstants.TRAILING);
+			btnNewButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					GUIHandler.parse(textField.getValue());
+				}
+			});
 			toolBar.add(btnNewButton);
 		tabbedPane.addTab("Downloading", null, download, null);
 		tabbedPane.addTab("Tools", null, tools, null);
