@@ -20,7 +20,7 @@ public class buildWindow extends JPanel {
 		splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
 		panel.add(splitPane);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		splitPane.setRightComponent(tabbedPane);
 		JPanel home=new JPanel();
 		JPanel yprgms=new JPanel();
@@ -72,14 +72,14 @@ public class buildWindow extends JPanel {
 		tabbedPane.addTab("Tools", null, tools, null);
 		
 		JTextPane txtpnDevmodeNo = new JTextPane();
-		txtpnDevmodeNo.setText("Devmode no");
+		txtpnDevmodeNo.setEditable(false);
 		tools.add(txtpnDevmodeNo);
 			tabbedPane.setEnabledAt(4, true);
 			if(cfg.isDev==true) {
-				
+				txtpnDevmodeNo.setText("Devmode Enabled");
 			}
 			else {
-				
+				txtpnDevmodeNo.setText("Devmode not enabled");
 			}
 		tabbedPane.addTab("Settings", null, settings, null);
 			tabbedPane.setEnabledAt(5, true);
