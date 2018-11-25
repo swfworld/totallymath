@@ -4,12 +4,14 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import main.GUI;
+import main.cfg;
 
 import java.io.IOException;
 
 public class buildWindow extends JPanel {
 	private static JTable table;
 	private JTextField textField;
+	private JTextField txtRootEnabled;
 	public buildWindow(JFrame f) {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, 0));
@@ -29,24 +31,27 @@ public class buildWindow extends JPanel {
 		table = new JTable();
 		table.setShowGrid(false);
 		tabbedPane.addTab("Home", null, home, null);
-		home.setLayout(new BorderLayout(0, 0));
+		tabbedPane.setEnabledAt(0, true);
+			home.setLayout(new BorderLayout(0, 0));
 			JButton btnNewButton_1 = new JButton("Check For Updates");
+			btnNewButton_1.setVerticalAlignment(SwingConstants.TOP);
 			home.add(btnNewButton_1, BorderLayout.NORTH);
 			JButton btnNewButton_2 = new JButton("Get Programs");
+			btnNewButton_2.setVerticalAlignment(SwingConstants.BOTTOM);
 			btnNewButton_2.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
 			        tabbedPane.setSelectedIndex(2);
 			    }
 			});
 			home.add(btnNewButton_2, BorderLayout.SOUTH);
-			JEditorPane nestHome=new JEditorPane();
-			nestHome.setEnabled(false);
-			home.add(nestHome, BorderLayout.CENTER);
 		tabbedPane.addTab("Your Programs", null, yprgms, null);
+		tabbedPane.setEnabledAt(1, true);
 			yprgms.setLayout(new BorderLayout(0, 0));
 		tabbedPane.addTab("Get Programs", null, gprgms, null);
+		tabbedPane.setEnabledAt(2, true);
 			gprgms.setLayout(new BorderLayout(0, 0));
 			JToolBar toolBar = new JToolBar();
+			toolBar.setFloatable(false);
 			gprgms.add(toolBar, BorderLayout.NORTH);
 			JTextField textField = new JTextField();
 			toolBar.add(textField);
@@ -59,15 +64,46 @@ public class buildWindow extends JPanel {
 				}
 			});
 			toolBar.add(btnNewButton);
+			
+			JScrollPane scrollPane = new JScrollPane();
+			gprgms.add(scrollPane, BorderLayout.CENTER);
 		tabbedPane.addTab("Downloading", null, download, null);
+			tabbedPane.setEnabledAt(3, true);
 		tabbedPane.addTab("Tools", null, tools, null);
+		
+		JTextPane txtpnDevmodeNo = new JTextPane();
+		txtpnDevmodeNo.setText("Devmode no");
+		tools.add(txtpnDevmodeNo);
+			tabbedPane.setEnabledAt(4, true);
+			if(cfg.isDev==true) {
+				
+			}
+			else {
+				
+			}
 		tabbedPane.addTab("Settings", null, settings, null);
+			tabbedPane.setEnabledAt(5, true);
+			settings.setLayout(new BorderLayout(0,0));
 		JToolBar toolbar=new JToolBar();
+		toolbar.setFloatable(false);
 		toolbar.setEnabled(false);
 		splitPane.setLeftComponent(toolbar);
 		
 		JLabel lblJavatm = new JLabel("JavaTM");
 		toolbar.add(lblJavatm);
+		
+		txtRootEnabled = new JTextField();
+		if(cfg.rootEnabled) {
+			txtRootEnabled.setEnabled(true);
+			txtRootEnabled.setText("ROOT ENABLED");
+		}
+		else {
+			txtRootEnabled.setEnabled(false);
+		}
+		txtRootEnabled.setEditable(false);
+		txtRootEnabled.setHorizontalAlignment(SwingConstants.TRAILING);
+		toolbar.add(txtRootEnabled);
+		txtRootEnabled.setColumns(10);
 		
 		f.getContentPane().add(panel, BorderLayout.CENTER);
 	}

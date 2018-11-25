@@ -32,14 +32,37 @@ public class loading{
 		txtWidth.setText("Width");
 		toolBar_1.add(txtWidth);
 		txtWidth.setColumns(10);
+		txtWidth.addFocusListener(new FocusAdapter() {
+			public void focusGained(FocusEvent fEvt) {
+				JTextField tField = (JTextField)fEvt.getSource();
+				tField.selectAll();
+			}
+		});
 		
 		txtHeight = new JTextField();
 		txtHeight.setText("Height");
 		toolBar_1.add(txtHeight);
 		txtHeight.setColumns(10);
+		txtHeight.addFocusListener(new FocusAdapter() {
+			public void focusGained(FocusEvent fEvt) {
+				JTextField tField = (JTextField)fEvt.getSource();
+				tField.selectAll();
+			}
+		});
 		
-		JCheckBoxMenuItem chckbxmntmSetAsDefault = new JCheckBoxMenuItem("Set as default");
-		toolBar_1.add(chckbxmntmSetAsDefault);
+		JCheckBoxMenuItem setDefault = new JCheckBoxMenuItem("Set as default");
+		setDefault.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(setDefault.isSelected()) {
+					
+				}
+			}
+		});
+		toolBar_1.add(setDefault);
+		
+		JPanel panel_1 = new JPanel();
+		splitPane.setRightComponent(panel_1);
+		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		JToolBar toolBar = new JToolBar();
 		panel.add(toolBar, BorderLayout.SOUTH);
 		
@@ -52,15 +75,21 @@ public class loading{
 		    	frame.dispose();
 		    	JFrame main=new JFrame();
 		    	main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		    	if(Integer.parseInt(txtWidth.getText())<=768 || Integer.parseInt(txtHeight.getText())<=480) {
-		    		main.setPreferredSize(new Dimension(1280, 720));
+		    	try {
+		    		Integer width=Integer.parseInt(txtWidth.getText());
+		    		Integer height=Integer.parseInt(txtHeight.getText());
+		    		if(width<720 || height<480) {
+		    			main.setPreferredSize(new Dimension(720,480));
+		    		}
+		    		else {
+		    			main.setPreferredSize(new Dimension(width,height));
+		    		}
 		    	}
-		    	else {
-		    		main.setPreferredSize(new Dimension(Integer.parseInt(txtWidth.getText()), Integer.parseInt(txtHeight.getText())));
+		    	catch(NumberFormatException ex) {
+		    		main.setPreferredSize(new Dimension(720,480));
 		    	}
 		    	main.pack();
 		    	new buildWindow(main);
-		    	
 		    	main.setVisible(true);
 		    }
 		});
