@@ -85,5 +85,13 @@ public class Main {
 		if(!maindir.exists()) {
 			CreateDirectories.createDirectories();
 		}
+		else{
+			if(mainjar.exists()){
+				
+			}
+			else{
+				
+			}
+		}
 	}
 }
