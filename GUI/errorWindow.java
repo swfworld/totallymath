@@ -9,6 +9,5 @@ public class errorWindow {
 		JLabel error= new JLabel(errorText);
 		frame.add(error);
 		frame.pack();
-		
 	}
 }

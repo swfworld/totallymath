@@ -1,12 +1,14 @@
 package main;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import GUI.errorWindow;
 import setup.CreateDirectories;
 
 public class loader {
@@ -16,10 +18,35 @@ public class loader {
 	public static void runcommand(String command) throws IOException{
 		Runtime.getRuntime().exec(command);
 	}
+	public static boolean loadConfig(){
+		File cfgFile= new File(dir+"/cfg/main.cfg");
+		if(cfgFile.exists()!=true) {
+			new errorWindow("Config not found!");
+			System.exit(1);
+		}
+		else {
+			BufferedReader reader;
+			try {
+				reader = new BufferedReader(new FileReader(cfgFile));
+				String line = reader.readLine();
+				while (line != null) {
+					System.setProperty(line.split("=")[0],line.split("=")[1]);
+					line = reader.readLine();
+				}
+				reader.close();
+				return true;
+			}
+			catch(IOException e) {
+				return false;
+			}
+		}
+		return false;
+	}
 	public static String key(){
 		File key = new File(dir+"ac.key");
 		if(!key.exists()) {
-			return null;
+			new errorWindow("KeyFile not found!");
+			System.exit(1);
 		}
 		else {
 			String keycontents;

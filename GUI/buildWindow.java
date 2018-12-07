@@ -4,7 +4,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import main.GUI;
-import main.cfg;
 
 import java.io.IOException;
 
@@ -75,7 +74,7 @@ public class buildWindow extends JPanel {
 		txtpnDevmodeNo.setEditable(false);
 		tools.add(txtpnDevmodeNo);
 			tabbedPane.setEnabledAt(4, true);
-			if(cfg.isDev==true) {
+			if(System.getProperty("isDev")=="true") {
 				txtpnDevmodeNo.setText("Devmode Enabled");
 			}
 			else {
@@ -93,7 +92,7 @@ public class buildWindow extends JPanel {
 		toolbar.add(lblJavatm);
 		
 		txtRootEnabled = new JTextField();
-		if(cfg.rootEnabled) {
+		if(System.getProperty("rootEnabled")=="true") {
 			txtRootEnabled.setEnabled(true);
 			txtRootEnabled.setText("ROOT ENABLED");
 		}
