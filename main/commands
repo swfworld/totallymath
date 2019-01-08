@@ -1,0 +1,1 @@
+cd $JAVA_HOME && java -Xbootclasspath/a:jre/lib/deploy.jar -Djava.locale.providers=HOST,JRE,SPI -Xdock:name="Java Control Panel" com.sun.deploy.panel.ControlPanel
