@@ -60,21 +60,16 @@ public class loader {
 		return null;
 	}
 	public static boolean checkForUpdates(String url) {
-		
+		if(System.getProperty("version")!="") {
+			
+		}
 		return false;
 	}
 	public static boolean downloadAssets() {
 		try {
-			DownloadAgent.downloadUsingStream(updateURL, "latest.zip");
-			DownloadAgent.downloadUsingNIO(updateURL, "latest.zip");
-			try {
-				ZipExtractor.unzip(loader.dir+"latest.zip", loader.dir);
-				return true;
-			}
-			catch(IOException e) {
-				e.printStackTrace();
-				return false;
-			}
+			DownloadAgent.downloadUsingStream(updateURL, "latest.jar");
+			DownloadAgent.downloadUsingNIO(updateURL, "latest.jar");
+			return true;
 		}
 		catch(IOException e) {
 			e.printStackTrace();
