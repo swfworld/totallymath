@@ -9,9 +9,9 @@ import java.io.IOException;
 
 public class buildWindow extends JPanel {
 	private static JTable table;
-	private JTextField textField;
-	private JTextField txtRootEnabled;
-	public buildWindow(JFrame f) {
+	private static JTextField textField;
+	private static JTextField txtRootEnabled;
+	public static void start(JFrame f) {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, 0));
 		JSplitPane splitPane = new JSplitPane();

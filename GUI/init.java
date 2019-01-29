@@ -16,7 +16,7 @@ public class init{
 		JFrame frame = new JFrame("JavaTM");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(720, 480));
-		new loading(frame);
+		loading.loadingframe(frame);
 		frame.pack();
 		frame.setVisible(true);
 	}

@@ -5,15 +5,17 @@ import java.awt.event.*;
 
 import GUI.buildWindow;
 import main.GUI;
+import main.config;
 
 
 public class loading{
-	private JTextField txtWidth;
-	private JTextField txtHeight;
+	private static JTextField txtWidth;
+	private static JTextField txtHeight;
 	/**
+	 * @return 
 	 * @wbp.parser.entryPoint
 	 */
-	public loading(JFrame frame){
+	public static void loadingframe(JFrame frame){
 		JLabel lblJavatmLauncher = new JLabel("JavaTM Launcher");
 		lblJavatmLauncher.setEnabled(false);
 		frame.getContentPane().add(lblJavatmLauncher, BorderLayout.NORTH);
@@ -35,7 +37,7 @@ public class loading{
 		txtWidth.addFocusListener(new FocusAdapter() {
 			public void focusGained(FocusEvent fEvt) {
 				JTextField tField = (JTextField)fEvt.getSource();
-				tField.selectAll();
+				txtWidth.setText(null);
 			}
 		});
 		
@@ -46,18 +48,11 @@ public class loading{
 		txtHeight.addFocusListener(new FocusAdapter() {
 			public void focusGained(FocusEvent fEvt) {
 				JTextField tField = (JTextField)fEvt.getSource();
-				tField.selectAll();
+				txtHeight.setText(null);
 			}
 		});
 		
 		JCheckBoxMenuItem setDefault = new JCheckBoxMenuItem("Set as default");
-		setDefault.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				if(setDefault.isSelected()) {
-					
-				}
-			}
-		});
 		toolBar_1.add(setDefault);
 		
 		JPanel panel_1 = new JPanel();
@@ -83,13 +78,17 @@ public class loading{
 		    		}
 		    		else {
 		    			main.setPreferredSize(new Dimension(width,height));
+		    			if(setDefault.isSelected()){
+		    				config.setProperty("defaultWidth","");
+		    				config.setProperty("defaultHeight","");
+		    			}
 		    		}
 		    	}
 		    	catch(NumberFormatException ex) {
 		    		main.setPreferredSize(new Dimension(720,480));
 		    	}
 		    	main.pack();
-		    	new buildWindow(main);
+		    	buildWindow.start(main);
 		    	main.setVisible(true);
 		    }
 		});
