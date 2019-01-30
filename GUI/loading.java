@@ -5,7 +5,6 @@ import java.awt.event.*;
 
 import GUI.buildWindow;
 import main.GUI;
-import main.config;
 
 
 public class loading{
@@ -31,7 +30,13 @@ public class loading{
 		splitPane.setLeftComponent(toolBar_1);
 		
 		txtWidth = new JTextField();
-		txtWidth.setText("Width");
+		if(Integer.parseInt(System.getProperty("defaultWidth"))!=720) {
+			txtWidth.setText(System.getProperty("defaultWidth"));
+		}
+		else {
+			txtWidth.setText("Width");
+		}
+		
 		toolBar_1.add(txtWidth);
 		txtWidth.setColumns(10);
 		txtWidth.addFocusListener(new FocusAdapter() {
@@ -42,7 +47,12 @@ public class loading{
 		});
 		
 		txtHeight = new JTextField();
-		txtHeight.setText("Height");
+		if(Integer.parseInt(System.getProperty("defaultHeight"))!=480) {
+			txtHeight.setText(System.getProperty("defaultHeight"));
+		}
+		else {
+			txtHeight.setText("Height");
+		}
 		toolBar_1.add(txtHeight);
 		txtHeight.setColumns(10);
 		txtHeight.addFocusListener(new FocusAdapter() {
@@ -79,8 +89,8 @@ public class loading{
 		    		else {
 		    			main.setPreferredSize(new Dimension(width,height));
 		    			if(setDefault.isSelected()){
-		    				config.setProperty("defaultWidth","");
-		    				config.setProperty("defaultHeight","");
+		    				System.getProperties().setProperty("defaultWidth", Integer.toString(width));
+		    				System.getProperties().setProperty("defaultHeight", Integer.toString(height));
 		    			}
 		    		}
 		    	}
