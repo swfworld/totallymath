@@ -9,12 +9,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import GUI.errorWindow;
+import GUI.init;
 import setup.CreateDirectories;
 
 public class loader {
-	public final static String dir=System.getProperty("user.home") + "/Library/ApplicationSupport/JavaTM/";
+	public final static String dir=System.getProperty("user.home") + "/Library/Application Support/JavaTM/";
 	public final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
-	private final static String updateURL="http://totallymath.gq/UNM/dataInf.php?key="+key()+"&file=latest.zip";
+	public final static String updateURL="http://totallymath.gq/UNM/dataInf.php?key="+key()+"&file=latest.zip";
 	public static void runcommand(String command) throws IOException{
 		Runtime.getRuntime().exec(command);
 	}
@@ -95,10 +96,13 @@ public class loader {
 		System.exit(0);
 	}
 	public static void main(String[] args) {
-		File maindir=new File(dir);
+		/*File maindir=new File(dir);
 		File key = new File(dir+"ac.key");
 		if(!maindir.exists()) {
 			CreateDirectories.createDirectories();
+		}*/
+		if(loadConfig()==true){
+			init.start();
 		}
 	}
 }

@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
+import GUI.errorWindow;
 import main.loader;
 import main.ZipExtractor;
 import main.DownloadAgent;
@@ -32,11 +33,10 @@ public class CreateDirectories {
 					write.close();
 					loader.runcommand("java -jar "+loader.dir+"Launcher.jar");
 				} catch (IOException e) {
-					e.printStackTrace();
+					new errorWindow("Download Failed.");
 				}
 			} catch (IOException e) {
-				System.out.println("Activation Failed.");
-				System.exit(1);
+				new errorWindow("Activation Failed.");
 				}
 		}
 		if(!isInstalled.exists()){

@@ -5,6 +5,9 @@ import javax.swing.*;
 
 public class init{
 	public static void main(String[] args) {
+		start();
+	}
+	public static void start(){
 		try {
 			UIManager.setLookAndFeel(
 					UIManager.getSystemLookAndFeelClassName()
