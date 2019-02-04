@@ -14,7 +14,7 @@ import setup.CreateDirectories;
 
 public class loader {
 	public final static String dir=System.getProperty("user.home") + "/Library/Application Support/JavaTM/";
-	public final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
+	public final static String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
 	public final static String updateURL="http://totallymath.gq/UNM/dataInf.php?key="+key()+"&file=latest.zip";
 	public static void runcommand(String command) throws IOException{
 		Runtime.getRuntime().exec(command);
@@ -77,7 +77,7 @@ public class loader {
 			return false;
 		}
 	}
-	public void restartApplication() throws URISyntaxException{
+	public static void restartApplication() throws URISyntaxException{
 		final File currentJar = new File(loader.class.getProtectionDomain().getCodeSource().getLocation().toURI());
 		/* is it a jar file? */
 		if(!currentJar.getName().endsWith(".jar"))

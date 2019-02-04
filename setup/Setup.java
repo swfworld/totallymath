@@ -225,7 +225,7 @@ public class Setup {
 		btnNext.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		    	try {
-					Main.restartApplication();
+					loader.restartApplication();
 				} catch (URISyntaxException e1) {
 					e1.printStackTrace();
 					System.exit(1);
